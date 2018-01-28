@@ -1,0 +1,48 @@
+{
+  "name": "@tm/lib.service.auth",
+  "version": "1.0.0",
+  "description": "Authentication library for MBB app with OAuth2/JWT supports for both Application Server & Swagger",
+  "main": "bin/index.js",
+  "typings": "bin/index",
+  "scripts": {
+    "clean": "rimraf bin/*",
+    "build": "npm run clean && npm up && tsc",
+    "b": "npm run build",
+    "prepublishOnly": "npm version patch && npm run build",
+    "p": "npm publish --access public"
+  },
+  "keywords": [],
+  "author": "MyBestBook.NET",
+  "license": "UNLICENSED",
+  "repository": {
+    "url": "https://github.com/thanhptr/tm.lib.service.auth.git"
+  },
+  "devDependencies": {
+    "@types/express": "^4.11.0",
+    "@types/jsonwebtoken": "^7.2.5",
+    "@types/node": "^8.5.9",
+    "@types/passport": "^0.4.2",
+    "@types/passport-facebook": "^2.1.7",
+    "@types/passport-google-oauth": "^1.0.37",
+    "@types/passport-jwt": "^3.0.0",
+    "@types/reflect-metadata": "0.0.5",
+    "@types/request": "^2.0.13",
+    "@types/request-promise-native": "^1.0.11",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "@tm/lib.common": "git+ssh://git@github.com/thanhptr/tm.lib.common.git",
+    "@tm/lib.service": "git+ssh://git@github.com/thanhptr/tm.lib.service.git",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-oauth": "^1.0.0",
+    "passport-jwt": "^3.0.1",
+    "reflect-metadata": "^0.1.12",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "rimraf": "^2.6.2",
+    "swagger-ui-dist": "^3.9.3"
+  }
+}

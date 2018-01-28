@@ -1,0 +1,43 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const passport = require("passport");
+const passportJwt = require("passport-jwt");
+const jwt = require("jsonwebtoken");
+let JwtEmptyValue;
+const JwtHandler = passport.authenticate('jwt', { session: false });
+/**
+ * Register passport.js to extract jwt tokens from cookies & auth header
+ */
+function registerJwtInternal(app, jwtConfig, jwtIgnoreUrls) {
+    JwtEmptyValue = jwt.sign({}, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
+    passport.use(new passportJwt.Strategy({
+        secretOrKey: jwtConfig.secret,
+        passReqToCallback: false,
+        jwtFromRequest: passportJwt.ExtractJwt.fromExtractors([
+            passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken(),
+            passportJwt.ExtractJwt.fromHeader(jwtConfig.headerField),
+            passportJwt.ExtractJwt.fromBodyField(jwtConfig.bodyField),
+            passportJwt.ExtractJwt.fromBodyField(jwtConfig.queryField),
+            jwtCookieExtractor
+        ])
+    }, jwtVerify));
+    if (!!jwtIgnoreUrls) {
+        jwtIgnoreUrls.map(jwtIgnore => app.use(jwtIgnore, jwtEmptyHandler));
+    }
+    jwtConfig.paths.map(path => app.use(path, JwtHandler));
+}
+exports.registerJwtInternal = registerJwtInternal;
+function jwtEmptyHandler(req, res, next) {
+    if (!req.cookies.jwt) {
+        req.cookies.jwt = JwtEmptyValue;
+    }
+    return JwtHandler(req, res, next);
+}
+function jwtCookieExtractor(req) {
+    return !req.cookies ? undefined : req.cookies.jwt;
+}
+;
+function jwtVerify(payload, done) {
+    done(null, payload);
+}
+//# sourceMappingURL=jwt.js.map
