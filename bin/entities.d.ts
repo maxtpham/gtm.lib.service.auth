@@ -17,7 +17,7 @@ export interface JwtToken {
     /** List of scope or null is all scope (*) */
     scope: MapOfBoolean;
     /** Valid until */
-    expires: Date;
+    expires: number;
 }
 export declare type CreateJwtTokenFunction = (accessToken: string, refreshToken: string, providerSession: ProviderSession, profile: passport.Profile, done: (error: any, user?: any, info?: any) => void) => void;
 export interface IAuthConfig extends IModuleConfig {

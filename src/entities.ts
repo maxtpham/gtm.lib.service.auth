@@ -18,7 +18,7 @@ export interface JwtToken {
     /** List of scope or null is all scope (*) */
     scope: MapOfBoolean;
     /** Valid until */
-    expires: Date;
+    expires: number;
 }
 
 export type CreateJwtTokenFunction =
