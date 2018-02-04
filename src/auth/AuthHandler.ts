@@ -27,7 +27,7 @@ export class AuthHandler {
     public loggedinHandler(req: express.Request, res: express.Response, next: express.NextFunction) {
         // Persist the jwt cookie to submit along with every application request
         const cookieValue = jwt.sign(req.user, this.jwtSecret, { expiresIn: Math.round(((<entities.JwtToken>req.user).expires - Date.now()) / 1000) });
-        res.header('Set-Cookie', <any>this.cookiePaths.map(path => cookie.serialize('jwt', cookieValue, { path, expires: (<entities.JwtToken>req.user).expires })));
+        res.header('Set-Cookie', <any>this.cookiePaths.map(path => cookie.serialize('jwt', cookieValue, { path, expires: new Date((<entities.JwtToken>req.user).expires) })));
         next();
     }
 
