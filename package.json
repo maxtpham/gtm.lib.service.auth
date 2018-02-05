@@ -1,5 +1,5 @@
 {
-  "name": "@tm/lib.service.auth",
+  "name": "@gtm/lib.service.auth",
   "version": "1.0.0",
   "description": "Authentication library for MBB app with OAuth2/JWT supports for both Application Server & Swagger",
   "main": "bin/index.js",
@@ -8,14 +8,14 @@
     "clean": "rimraf bin/*",
     "build": "yarn run clean && yarn && tsc",
     "b": "yarn run build",
-    "prepublishOnly": "yarn version patch && yarn run build",
-    "p": "yarn publish --access public"
+    "prepublishOnly": "npm version patch && yarn run build && git push origin",
+    "p": "npm publish --access public"
   },
   "keywords": [],
   "author": "MyBestBook.NET",
   "license": "UNLICENSED",
   "repository": {
-    "url": "https://github.com/thanhptr/tm.lib.service.auth.git"
+    "url": "https://github.com/thanhptr/gtm.lib.service.auth.git"
   },
   "devDependencies": {
     "@types/express": "^4.11.0",
@@ -30,8 +30,8 @@
     "typescript": "^2.7.1"
   },
   "dependencies": {
-    "@tm/lib.common": "thanhptr/tm.lib.common",
-    "@tm/lib.service": "thanhptr/tm.lib.service",
+    "@gtm/lib.common": "^1.0.9",
+    "@gtm/lib.service": "^1.0.1",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.1",
     "passport": "^0.4.0",

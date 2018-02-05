@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@tm/lib.common@thanhptr/tm.lib.common":
-  version "1.0.0"
-  resolved "https://codeload.github.com/thanhptr/tm.lib.common/tar.gz/f8b07922bfa6860d4e2c1540a52be58c6ea78c1d"
+"@gtm/lib.common@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@gtm/lib.common/-/lib.common-1.0.9.tgz#1b73e310f7911a3524e540ea054ab7d682848b8f"
   dependencies:
     inversify "^4.10.0"
     inversify-binding-decorators "^3.2.0"
@@ -12,11 +12,11 @@
     reflect-metadata "^0.1.12"
     rimraf "^2.6.2"
 
-"@tm/lib.service@thanhptr/tm.lib.service":
-  version "1.0.0"
-  resolved "https://codeload.github.com/thanhptr/tm.lib.service/tar.gz/efca0696430a7f4160922c9f1461c57f29ee0c7b"
+"@gtm/lib.service@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@gtm/lib.service/-/lib.service-1.0.1.tgz#32ac4b2e2c3d99a378615fc9a8c6dcf0b586de80"
   dependencies:
-    "@tm/lib.common" thanhptr/tm.lib.common
+    "@gtm/lib.common" "^1.0.9"
     body-parser "^1.18.2"
     config "^1.29.4"
     cookie-parser "^1.4.3"

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
-const lib_service_1 = require("@tm/lib.service");
+const lib_service_1 = require("@gtm/lib.service");
 const Utils_1 = require("../lib/Utils");
 function registerSwaggerConfigInternal(app, config, swaggerBaseDir) {
     return __awaiter(this, void 0, void 0, function* () {

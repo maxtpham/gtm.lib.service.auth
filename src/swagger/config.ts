@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as path from 'path';
 
-import { StaticFile } from '@tm/lib.service';
+import { StaticFile } from '@gtm/lib.service';
 import { Utils } from '../lib/Utils';
 import * as entities from '../entities';
 

@@ -5,7 +5,7 @@ import * as jwt from "jsonwebtoken";
 import * as cookie from "cookie";
 
 import * as entities from '../entities';
-import { IModuleConfig } from '@tm/lib.service';
+import { IModuleConfig } from '@gtm/lib.service';
 
 export interface ReturnUrlRequest extends express.Request {
     _returnUrl: string;

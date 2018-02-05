@@ -1,7 +1,7 @@
 /// <reference types="passport" />
-import { IModuleConfig } from "@tm/lib.service";
+import { IModuleConfig } from "@gtm/lib.service";
 import * as passport from "passport";
-import { MapOfBoolean } from "@tm/lib.common";
+import { MapOfBoolean } from "@gtm/lib.common";
 export interface ProviderSession {
     name: string;
     access_token: string;
