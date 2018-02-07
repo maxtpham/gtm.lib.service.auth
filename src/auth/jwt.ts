@@ -24,10 +24,12 @@ export function registerJwtInternal(app: express.Application, jwtConfig: entitie
             jwtCookieExtractor
         ])
     }, jwtVerify));
-    if (!!jwtIgnoreUrls) {
-        jwtIgnoreUrls.map(jwtIgnore => app.use(jwtIgnore, jwtEmptyHandler));
-    }
-    jwtConfig.paths.map(path => app.use(path, JwtHandler, jwtEmptyHandler));
+    // if (!!jwtIgnoreUrls) {
+    //     jwtIgnoreUrls.map(jwtIgnore => app.use(jwtIgnore, jwtEmptyHandler));
+    // }
+    // jwtConfig.paths.map(path => app.use(path, JwtHandler));
+    // All the path should be allowed to work without JWT
+    jwtConfig.paths.map(path => app.use(path, jwtEmptyHandler));
 }
 
 function jwtEmptyHandler(req: express.Request, res: express.Response, next: express.NextFunction): any {
