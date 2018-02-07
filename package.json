@@ -1,6 +1,6 @@
 {
   "name": "@gtm/lib.service.auth",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Authentication library for MBB app with OAuth2/JWT supports for both Application Server & Swagger",
   "main": "bin/index.js",
   "typings": "bin/index",
