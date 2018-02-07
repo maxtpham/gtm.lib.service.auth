@@ -12,7 +12,7 @@ const JwtHandler = passport.authenticate('jwt', { session: false });
  * Register passport.js to extract jwt tokens from cookies & auth header
  */
 export function registerJwtInternal(app: express.Application, jwtConfig: entities.IJwtConfig, jwtIgnoreUrls: string[]) {
-    JwtEmptyValue = jwt.sign({}, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
+    JwtEmptyValue = jwt.sign({'$':1}, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
     passport.use(new passportJwt.Strategy(<passportJwt.StrategyOptions>{
         secretOrKey: jwtConfig.secret,
         passReqToCallback: false,
