@@ -27,7 +27,7 @@ export function registerJwtInternal(app: express.Application, jwtConfig: entitie
     if (!!jwtIgnoreUrls) {
         jwtIgnoreUrls.map(jwtIgnore => app.use(jwtIgnore, jwtEmptyHandler));
     }
-    jwtConfig.paths.map(path => app.use(path, JwtHandler));
+    jwtConfig.paths.map(path => app.use(path, JwtHandler, jwtEmptyHandler));
 }
 
 function jwtEmptyHandler(req: express.Request, res: express.Response, next: express.NextFunction): any {

@@ -24,7 +24,7 @@ function registerJwtInternal(app, jwtConfig, jwtIgnoreUrls) {
     if (!!jwtIgnoreUrls) {
         jwtIgnoreUrls.map(jwtIgnore => app.use(jwtIgnore, jwtEmptyHandler));
     }
-    jwtConfig.paths.map(path => app.use(path, JwtHandler));
+    jwtConfig.paths.map(path => app.use(path, JwtHandler, jwtEmptyHandler));
 }
 exports.registerJwtInternal = registerJwtInternal;
 function jwtEmptyHandler(req, res, next) {
