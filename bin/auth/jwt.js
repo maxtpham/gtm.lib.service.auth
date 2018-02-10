@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const passport = require("passport");
 const passportJwt = require("passport-jwt");
 const jwt = require("jsonwebtoken");
+const _ = require("lodash");
 let JwtEmptyValue;
 const JwtHandler = passport.authenticate('jwt', { session: false });
 /**
@@ -26,7 +27,7 @@ function registerJwtInternal(app, jwtConfig, jwtIgnoreUrls) {
     // }
     // jwtConfig.paths.map(path => app.use(path, JwtHandler));
     // All the path should be allowed to work without JWT
-    jwtConfig.paths.map(path => app.use(path, jwtEmptyHandler));
+    _.union(jwtConfig.paths, jwtIgnoreUrls).map(path => app.use(path, jwtEmptyHandler));
 }
 exports.registerJwtInternal = registerJwtInternal;
 function jwtEmptyHandler(req, res, next) {

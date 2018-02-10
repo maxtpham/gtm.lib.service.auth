@@ -4,6 +4,7 @@ import * as passportJwt from "passport-jwt";
 import * as jwt from "jsonwebtoken";
 
 import * as entities from '../entities';
+import * as _ from 'lodash';
 
 let JwtEmptyValue: string;
 const JwtHandler = passport.authenticate('jwt', { session: false });
@@ -29,7 +30,7 @@ export function registerJwtInternal(app: express.Application, jwtConfig: entitie
     // }
     // jwtConfig.paths.map(path => app.use(path, JwtHandler));
     // All the path should be allowed to work without JWT
-    jwtConfig.paths.map(path => app.use(path, jwtEmptyHandler));
+    _.union(jwtConfig.paths, jwtIgnoreUrls).map(path => app.use(path, jwtEmptyHandler));
 }
 
 function jwtEmptyHandler(req: express.Request, res: express.Response, next: express.NextFunction): any {
