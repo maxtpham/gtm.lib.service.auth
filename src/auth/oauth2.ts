@@ -5,6 +5,8 @@ import * as entities from '../entities';
 import { AuthHandler, ReturnUrlRequest } from "./AuthHandler";
 import { urlencoded } from 'body-parser';
 
+import OAuth2Transform from "./oauth2.transform";
+
 let logoutRegistered: boolean = false;
 
 /**
@@ -27,7 +29,7 @@ export function registerOAuth2Internal(
         options.callbackURL = config.rootUrl + publicCallbackURL;
     const npm = config.auth[provider].npm;
     const OAuth2Strategy = require(npm.library)[npm.class]; // Load the Google/Facebook-Stratergy class (from npm package)
-    passport.use(new OAuth2Strategy(options, createJwtToken));
+    passport.use(new OAuth2Strategy(options, OAuth2Transform(provider, createJwtToken)));
 
     // Handle browser request to Login button (this will navigate user to provider login page from the frontend webpage)
     app.get(publicLoginURL, new PublicLoginHandler(provider, config.auth[provider].scope).handler);

@@ -1,5 +1,5 @@
 /// <reference types="passport" />
-import { IModuleConfig } from "@gtm/lib.service";
+import { IModuleConfig, AttachmentView } from "@gtm/lib.service";
 import * as passport from "passport";
 import { MapOfBoolean } from "@gtm/lib.common";
 export interface ProviderSession {
@@ -19,7 +19,18 @@ export interface JwtToken {
     /** Valid until */
     expires: number;
 }
-export declare type CreateJwtTokenFunction = (accessToken: string, refreshToken: string, providerSession: ProviderSession, profile: passport.Profile, done: (error: any, user?: any, info?: any) => void) => void;
+export interface OAuth2ProfileExt {
+    id: string;
+    name?: string;
+    email?: string;
+    gender?: string;
+    avatar?: AttachmentView;
+    address?: string;
+    timezone?: number;
+    language?: string;
+}
+export declare type CreateJwtTokenFunction = (accessToken: string, refreshToken: string, providerSession: ProviderSession, profile: passport.Profile, profileExt: OAuth2ProfileExt, done: (error: any, user?: any, info?: any) => void) => Promise<void>;
+export declare type VerifyJwtTokenFunction = (accessToken: string, refreshToken: string, providerSession: ProviderSession, profile: passport.Profile, done: (error: any, user?: any, info?: any) => void) => Promise<void>;
 export interface IAuthConfig extends IModuleConfig {
     jwt: IJwtConfig;
     swagger: ISwaggerConfig;

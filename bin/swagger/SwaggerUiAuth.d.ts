@@ -15,7 +15,7 @@ export declare class SwaggerUiAuthProvider {
     protected basePath: string;
     private provider;
     private config;
-    private createJwtToken;
+    private verifyJwtToken;
     private jwtSecret;
     private jwtPaths;
     constructor(basePath: string, provider: string, swaggerAuthConfig: entities.IOAuth2Config, jwtSecret: string, jwtPaths: string[], createJwtToken: entities.CreateJwtTokenFunction);

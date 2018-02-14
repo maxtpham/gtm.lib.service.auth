@@ -8,6 +8,7 @@ import * as jwt from "jsonwebtoken";
 import * as cookie from "cookie";
 
 import * as entities from '../entities';
+import OAuth2Transform from "../auth/oauth2.transform";
 
 interface OAuth2Token {
     access_token: string;
@@ -33,7 +34,7 @@ export class SwaggerUiAuthProvider {
     protected basePath: string;
     private provider: string;
     private config: entities.IOAuth2Config;
-    private createJwtToken: entities.CreateJwtTokenFunction;
+    private verifyJwtToken: entities.VerifyJwtTokenFunction;
     private jwtSecret: string;
     private jwtPaths: string[];
     
@@ -43,7 +44,7 @@ export class SwaggerUiAuthProvider {
         this.config = swaggerAuthConfig;
         this.jwtSecret = jwtSecret;
         this.jwtPaths = jwtPaths;
-        this.createJwtToken = createJwtToken;
+        this.verifyJwtToken = OAuth2Transform(provider, createJwtToken);
     }
 
     /**
@@ -116,7 +117,7 @@ export class SwaggerUiAuthProvider {
                 next(ex);
             }
             if (!!profile) {
-                this.createJwtToken(token.access_token, undefined, <any>token, profile, (error, user, info) => {
+                this.verifyJwtToken(token.access_token, undefined, <any>token, profile, (error, user, info) => {
                     if (error) {
                         next(error);
                     } else {

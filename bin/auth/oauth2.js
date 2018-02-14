@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const passport = require("passport");
 const AuthHandler_1 = require("./AuthHandler");
+const oauth2_transform_1 = require("./oauth2.transform");
 let logoutRegistered = false;
 /**
  * @param app Auth Express Server
@@ -19,7 +20,7 @@ function registerOAuth2Internal(app, provider, config, createJwtToken, publicLog
         options.callbackURL = config.rootUrl + publicCallbackURL;
     const npm = config.auth[provider].npm;
     const OAuth2Strategy = require(npm.library)[npm.class]; // Load the Google/Facebook-Stratergy class (from npm package)
-    passport.use(new OAuth2Strategy(options, createJwtToken));
+    passport.use(new OAuth2Strategy(options, oauth2_transform_1.default(provider, createJwtToken)));
     // Handle browser request to Login button (this will navigate user to provider login page from the frontend webpage)
     app.get(publicLoginURL, new PublicLoginHandler(provider, config.auth[provider].scope).handler);
     const authHandler = new AuthHandler_1.AuthHandler(config, provider, config.jwt.secret, config.jwt.paths.concat([config.swagger.baseUrl]));

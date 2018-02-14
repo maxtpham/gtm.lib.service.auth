@@ -11,6 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const requestPromise = require("request-promise-native");
 const querystring = require("querystring");
 const jwt = require("jsonwebtoken");
+const oauth2_transform_1 = require("../auth/oauth2.transform");
 class SwaggerUiAuth {
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
@@ -32,7 +33,7 @@ class SwaggerUiAuthProvider {
         this.config = swaggerAuthConfig;
         this.jwtSecret = jwtSecret;
         this.jwtPaths = jwtPaths;
-        this.createJwtToken = createJwtToken;
+        this.verifyJwtToken = oauth2_transform_1.default(provider, createJwtToken);
     }
     /**
      * [GET /swagger/authorization/:provider?response_type=&client_id=&redirect_uri=&scope=&state] OAuth2 authorization proxy
@@ -103,7 +104,7 @@ class SwaggerUiAuthProvider {
                     next(ex);
                 }
                 if (!!profile) {
-                    this.createJwtToken(token.access_token, undefined, token, profile, (error, user, info) => {
+                    this.verifyJwtToken(token.access_token, undefined, token, profile, (error, user, info) => {
                         if (error) {
                             next(error);
                         }
