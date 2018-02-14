@@ -27,8 +27,8 @@ export function registerJwtInternal(app: express.Application, jwtConfig: entitie
             jwtCookieExtractor
         ])
     }, jwtVerify));
-    jwtConfig.paths.map(path => app.use(path, jwtEmptyHandler));
     jwtIgnoreUrls.map(path => app.use(path, jwtIgnoreHandler));
+    jwtConfig.paths.map(path => app.use(path, jwtEmptyHandler));
 }
 
 function jwtEmptyHandler(req: express.Request, res: express.Response, next: express.NextFunction): any {
