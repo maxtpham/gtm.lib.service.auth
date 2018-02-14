@@ -37,6 +37,7 @@ export function normalizeOAuth2(config: entities.IOAuth2Config): entities.IOAuth
         if (!config.auth.facebook.tokenUrl) config.auth.facebook.tokenUrl = 'https://graph.facebook.com/oauth/access_token';
         if (!config.auth.facebook.scope) config.auth.facebook.scope = ['public_profile'];
         if (!config.auth.facebook.npm) config.auth.facebook.npm = { library: 'passport-facebook', class: 'Strategy' };
+        if (config.auth.facebook.options && !(config.auth.facebook.options as any).profileFields) (config.auth.facebook.options as any).profileFields = ['id', 'displayName', 'photos', 'name', 'about', 'admin_notes', 'age_range', 'birthday', 'context', 'cover', 'currency', 'devices', 'education', 'email', 'employee_number', 'favorite_athletes', 'favorite_teams', 'first_name', 'gender', 'hometown', 'inspirational_people', 'install_type', 'installed', 'interested_in', 'is_shared_login', 'is_verified', 'labels', 'languages', 'last_name', 'link', 'locale', 'location', 'meeting_for', 'middle_name', 'name', 'name_format', 'payment_pricepoints', 'political', 'public_key', 'quotes', 'relationship_status', 'religion', 'security_settings', 'shared_login_upgrade_required_by', 'significant_other', 'sports', 'test_group', 'third_party_id', 'timezone', 'token_for_business', 'updated_time', 'verified', 'video_upload_limits', 'viewer_can_send_gift', 'website', 'work', ];
     }
     
     return config;
@@ -80,7 +81,8 @@ export function normalizeOAuth2(config: entities.IOAuth2Config): entities.IOAuth
             },
             "options": {
                 "clientID": "1983328695283502",
-                "clientSecret": "cd595d42b38dbc0213e36f7eee740c88"
+                "clientSecret": "cd595d42b38dbc0213e36f7eee740c88",
+                "profileFields": ['id', 'displayName', 'photos', 'email']
             }
         }
     },
