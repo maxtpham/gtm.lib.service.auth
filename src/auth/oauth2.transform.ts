@@ -45,7 +45,7 @@ class GoogleOAuth2VerifyCallback extends OAuth2ProfileTransform {
             timezone: undefined,
             language: (<any>profile)._json.language
         };
-        await super.verifyCb(accessToken, refreshToken, providerSession, profile, profileExt, done);
+        await this.verifyCb(accessToken, refreshToken, providerSession, profile, profileExt, done);
     }
 }
 
@@ -67,7 +67,7 @@ class FacebookOAuth2VerifyCallback extends OAuth2ProfileTransform {
             timezone: (<any>profile)._json.timezone,
             language: !(<any>profile)._json.locale ? undefined : FacebookOAuth2VerifyCallback.locale2Language((<any>profile)._json.locale)
         };
-        await super.verifyCb(accessToken, refreshToken, providerSession, profile, profileExt, done);
+        await this.verifyCb(accessToken, refreshToken, providerSession, profile, profileExt, done);
     }
 }
 
