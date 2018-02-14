@@ -51,7 +51,7 @@ class GoogleOAuth2VerifyCallback extends OAuth2ProfileTransform {
                 timezone: undefined,
                 language: profile._json.language
             };
-            return _super("verifyCb").call(this, accessToken, refreshToken, providerSession, profile, profileExt, done);
+            yield _super("verifyCb").call(this, accessToken, refreshToken, providerSession, profile, profileExt, done);
         });
     }
 }
@@ -73,7 +73,7 @@ class FacebookOAuth2VerifyCallback extends OAuth2ProfileTransform {
                 timezone: profile._json.timezone,
                 language: !profile._json.locale ? undefined : FacebookOAuth2VerifyCallback.locale2Language(profile._json.locale)
             };
-            return _super("verifyCb").call(this, accessToken, refreshToken, providerSession, profile, profileExt, done);
+            yield _super("verifyCb").call(this, accessToken, refreshToken, providerSession, profile, profileExt, done);
         });
     }
 }
