@@ -11,6 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const path = require("path");
 const fs = require("fs");
 const util = require("util");
+const request = require("request");
 class Utils {
     static enumFiles(dir, ...exts) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -36,6 +37,25 @@ class Utils {
                     throw new Error(`enumFiles(${dir}): error while processing file ${filename}: ${ex}`);
                 }
             })))).filter(v => !!v);
+        });
+    }
+    static fetchPhoto(url) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => {
+                request({ url }, function (error, response, body) {
+                    if (!!error) {
+                        reject(error);
+                    }
+                    else {
+                        if (body && response.statusCode < 300 && response.headers['content-type']) {
+                            resolve({ media: response.headers['content-type'], data: body });
+                        }
+                        else {
+                            reject(new Error(`Fetch photo error from ${url}: ${response.statusCode}-${response.statusMessage}`));
+                        }
+                    }
+                });
+            });
         });
     }
 }

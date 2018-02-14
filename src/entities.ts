@@ -26,7 +26,7 @@ export interface OAuth2ProfileExt {
     name?: string;
     email?: string;
     gender?: string;
-    avatar?: AttachmentView;
+    avatar?: string;
     address?: string;
     timezone?: number;
     language?: string;

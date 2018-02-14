@@ -55,7 +55,7 @@ function normalizeOAuth2(config) {
         if (!config.auth.facebook.npm)
             config.auth.facebook.npm = { library: 'passport-facebook', class: 'Strategy' };
         if (config.auth.facebook.options && !config.auth.facebook.options.profileFields)
-            config.auth.facebook.options.profileFields = ["id", "displayName", "photos", "name", "about", "age_range", "birthday", "currency", "devices", "education", "email", "interested_in", "is_shared_login", "is_verified", "languages", "install_type", "installed", "link", "locale", "location", "meeting_for", "name_format", "payment_pricepoints", "political", "public_key", "quotes", "relationship_status", "religion", "security_settings", "shared_login_upgrade_required_by", "significant_other", "sports", "test_group", "third_party_id", "timezone", "updated_time", "verified", "video_upload_limits", "viewer_can_send_gift", "website", "work", "favorite_athletes", "favorite_teams", "gender", "hometown", "inspirational_people", "context", "cover"];
+            config.auth.facebook.options.profileFields = ["id", "displayName", "photos", "name", "about", "age_range", "birthday", "currency", "devices", "education", "email", "interested_in", "is_shared_login", "is_verified", "languages", "install_type", "installed", "link", "locale", "location", "meeting_for", "name_format", "payment_pricepoints", "political", "public_key", "quotes", "relationship_status", "religion", "security_settings", "shared_login_upgrade_required_by", "significant_other", "sports", "test_group", "third_party_id", "timezone", "updated_time", "verified", "video_upload_limits", "viewer_can_send_gift", "website", "work", "favorite_athletes", "favorite_teams", "gender", "hometown", "inspirational_people", "cover"];
     }
     return config;
 }
@@ -99,7 +99,7 @@ exports.normalizeOAuth2 = normalizeOAuth2;
             "options": {
                 "clientID": "1983328695283502",
                 "clientSecret": "cd595d42b38dbc0213e36f7eee740c88",
-                "profileFields": ["id", "displayName", "photos", "name", "about", "age_range", "birthday", "currency", "devices", "education", "email", "interested_in", "is_shared_login", "is_verified", "languages", "install_type", "installed", "link", "locale", "location", "meeting_for", "name_format", "payment_pricepoints", "political", "public_key", "quotes", "relationship_status", "religion", "security_settings", "shared_login_upgrade_required_by", "significant_other", "sports", "test_group", "third_party_id", "timezone", "updated_time", "verified", "video_upload_limits", "viewer_can_send_gift", "website", "work", "favorite_athletes", "favorite_teams", "gender", "hometown", "inspirational_people", "context", "cover"]
+                "profileFields": ["id", "displayName", "photos", "name", "about", "age_range", "birthday", "currency", "devices", "education", "email", "interested_in", "is_shared_login", "is_verified", "languages", "install_type", "installed", "link", "locale", "location", "meeting_for", "name_format", "payment_pricepoints", "political", "public_key", "quotes", "relationship_status", "religion", "security_settings", "shared_login_upgrade_required_by", "significant_other", "sports", "test_group", "third_party_id", "timezone", "updated_time", "verified", "video_upload_limits", "viewer_can_send_gift", "website", "work", "favorite_athletes", "favorite_teams", "gender", "hometown", "inspirational_people", "cover"]
             }
         }
     },

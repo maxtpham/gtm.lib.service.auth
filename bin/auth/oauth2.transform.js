@@ -8,7 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const request = require("request");
 /** to transform the Passport.profile into generic profile with some additional fields to store into system DB */
 class OAuth2ProfileTransform {
     constructor(verifyCb) {
@@ -17,36 +16,16 @@ class OAuth2ProfileTransform {
     get handler() {
         return this.handle.bind(this);
     }
-    fetchPhoto(url) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return new Promise((resolve, reject) => {
-                request({ url }, function (error, response, body) {
-                    if (!!error) {
-                        reject(error);
-                    }
-                    else {
-                        if (body && response.statusCode < 300 && response.headers['content-type']) {
-                            resolve({ media: response.headers['content-type'], data: body });
-                        }
-                        else {
-                            reject(new Error(`Fetch photo error from ${url}: ${response.statusCode}-${response.statusMessage}`));
-                        }
-                    }
-                });
-            });
-        });
-    }
 }
 class GoogleOAuth2VerifyCallback extends OAuth2ProfileTransform {
     handle(accessToken, refreshToken, providerSession, profile, done) {
-        const _super = name => super[name];
         return __awaiter(this, void 0, void 0, function* () {
             const profileExt = {
                 id: profile.id,
                 name: profile.displayName,
                 email: !profile.emails || profile.emails.length <= 0 ? undefined : profile.emails[0].value,
                 gender: profile._json.gender,
-                avatar: !profile.photos || profile.photos.length <= 0 ? undefined : yield _super("fetchPhoto").call(this, profile.photos[0].value),
+                avatar: !profile.photos || profile.photos.length <= 0 ? undefined : profile.photos[0].value,
                 address: !profile._json.placesLived || profile._json.placesLived.length <= 0 ? profile._json.url : profile._json.placesLived[0].value,
                 timezone: undefined,
                 language: profile._json.language
@@ -61,14 +40,13 @@ class FacebookOAuth2VerifyCallback extends OAuth2ProfileTransform {
         return pos <= 0 ? locale : locale.substr(0, pos);
     }
     handle(accessToken, refreshToken, providerSession, profile, done) {
-        const _super = name => super[name];
         return __awaiter(this, void 0, void 0, function* () {
             const profileExt = {
                 id: profile.id,
                 name: profile.displayName,
                 email: !profile.emails || profile.emails.length <= 0 ? undefined : profile.emails[0].value,
                 gender: profile._json.gender,
-                avatar: !profile.photos || profile.photos.length <= 0 ? undefined : yield _super("fetchPhoto").call(this, profile.photos[0].value),
+                avatar: !profile.photos || profile.photos.length <= 0 ? undefined : profile.photos[0].value,
                 address: profile._json.profileUrl,
                 timezone: profile._json.timezone,
                 language: !profile._json.locale ? undefined : FacebookOAuth2VerifyCallback.locale2Language(profile._json.locale)

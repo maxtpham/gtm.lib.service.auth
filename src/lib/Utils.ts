@@ -1,6 +1,8 @@
 import * as path from "path";
 import * as fs from "fs";
 import * as util from "util";
+import * as request from 'request';
+import { AttachmentView } from "@gtm/lib.service/bin";
 
 export class Utils {
     public static async enumFiles(dir: string, ...exts: string[]): Promise<string[]> {
@@ -25,5 +27,21 @@ export class Utils {
                 throw new Error(`enumFiles(${dir}): error while processing file ${filename}: ${ex}`);
             }
         }))).filter(v => !!v);
+    }
+
+    public static async fetchPhoto(url: string): Promise<AttachmentView> {
+        return new Promise<AttachmentView>((resolve, reject) => {
+            request({ url }, function (error, response, body) {
+                if (!!error) {
+                    reject(error);
+                } else {
+                    if (body && response.statusCode < 300 && response.headers['content-type']) {
+                        resolve(<AttachmentView>{ media: response.headers['content-type'], data: body })
+                    } else {
+                        reject(new Error(`Fetch photo error from ${url}: ${response.statusCode}-${response.statusMessage}`));
+                    }
+                }
+            });
+        });
     }
 }

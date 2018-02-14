@@ -1,5 +1,5 @@
 /// <reference types="passport" />
-import { IModuleConfig, AttachmentView } from "@gtm/lib.service";
+import { IModuleConfig } from "@gtm/lib.service";
 import * as passport from "passport";
 import { MapOfBoolean } from "@gtm/lib.common";
 export interface ProviderSession {
@@ -24,7 +24,7 @@ export interface OAuth2ProfileExt {
     name?: string;
     email?: string;
     gender?: string;
-    avatar?: AttachmentView;
+    avatar?: string;
     address?: string;
     timezone?: number;
     language?: string;
