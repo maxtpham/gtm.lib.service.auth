@@ -42,7 +42,7 @@ class Utils {
     static fetchPhoto(url) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
-                request({ url }, function (error, response, body) {
+                request({ url, encoding: null }, function (error, response, body) {
                     if (!!error) {
                         reject(error);
                     }

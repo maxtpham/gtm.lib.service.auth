@@ -31,7 +31,7 @@ export class Utils {
 
     public static async fetchPhoto(url: string): Promise<AttachmentView> {
         return new Promise<AttachmentView>((resolve, reject) => {
-            request({ url }, function (error, response, body) {
+            request({ url, encoding: null }, function (error, response, body) {
                 if (!!error) {
                     reject(error);
                 } else {
