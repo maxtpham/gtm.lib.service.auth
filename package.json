@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@gtm/lib.common": "^1.0.9",
-    "@gtm/lib.service": "^1.0.5",
+    "@gtm/lib.service": "^1.0.6",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.1",
     "lodash": "^4.17.5",

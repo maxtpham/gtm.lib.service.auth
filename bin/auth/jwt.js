@@ -3,14 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const passport = require("passport");
 const passportJwt = require("passport-jwt");
 const jwt = require("jsonwebtoken");
-const _ = require("lodash");
 let JwtEmptyValue;
+let JwtIgnoreValue;
 const JwtHandler = passport.authenticate('jwt', { session: false });
 /**
  * Register passport.js to extract jwt tokens from cookies & auth header
  */
 function registerJwtInternal(app, jwtConfig, jwtIgnoreUrls) {
     JwtEmptyValue = jwt.sign({ '$': 1 }, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
+    JwtIgnoreValue = jwt.sign({ '$': 2 }, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
     passport.use(new passportJwt.Strategy({
         secretOrKey: jwtConfig.secret,
         passReqToCallback: false,
@@ -22,17 +23,19 @@ function registerJwtInternal(app, jwtConfig, jwtIgnoreUrls) {
             jwtCookieExtractor
         ])
     }, jwtVerify));
-    // if (!!jwtIgnoreUrls) {
-    //     jwtIgnoreUrls.map(jwtIgnore => app.use(jwtIgnore, jwtEmptyHandler));
-    // }
-    // jwtConfig.paths.map(path => app.use(path, JwtHandler));
-    // All the path should be allowed to work without JWT
-    _.union(jwtConfig.paths, jwtIgnoreUrls).map(path => app.use(path, jwtEmptyHandler));
+    jwtConfig.paths.map(path => app.use(path, jwtEmptyHandler));
+    jwtIgnoreUrls.map(path => app.use(path, jwtIgnoreHandler));
 }
 exports.registerJwtInternal = registerJwtInternal;
 function jwtEmptyHandler(req, res, next) {
     if (!req.cookies.jwt) {
         req.cookies.jwt = JwtEmptyValue;
+    }
+    return JwtHandler(req, res, next);
+}
+function jwtIgnoreHandler(req, res, next) {
+    if (!req.cookies.jwt) {
+        req.cookies.jwt = JwtIgnoreValue;
     }
     return JwtHandler(req, res, next);
 }
