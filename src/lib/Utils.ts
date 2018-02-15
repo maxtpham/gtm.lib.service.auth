@@ -3,6 +3,7 @@ import * as fs from "fs";
 import * as util from "util";
 import * as request from 'request';
 import { AttachmentView } from "@gtm/lib.service/bin";
+import { Binary } from "bson";
 
 export class Utils {
     public static async enumFiles(dir: string, ...exts: string[]): Promise<string[]> {
@@ -36,7 +37,7 @@ export class Utils {
                     reject(error);
                 } else {
                     if (body && response.statusCode < 300 && response.headers['content-type']) {
-                        resolve(<AttachmentView>{ media: response.headers['content-type'], data: body })
+                        resolve(<AttachmentView>{ media: response.headers['content-type'], data: new Binary(body, Binary.SUBTYPE_BYTE_ARRAY) })
                     } else {
                         reject(new Error(`Fetch photo error from ${url}: ${response.statusCode}-${response.statusMessage}`));
                     }

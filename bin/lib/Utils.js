@@ -12,6 +12,7 @@ const path = require("path");
 const fs = require("fs");
 const util = require("util");
 const request = require("request");
+const bson_1 = require("bson");
 class Utils {
     static enumFiles(dir, ...exts) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -48,7 +49,7 @@ class Utils {
                     }
                     else {
                         if (body && response.statusCode < 300 && response.headers['content-type']) {
-                            resolve({ media: response.headers['content-type'], data: body });
+                            resolve({ media: response.headers['content-type'], data: new bson_1.Binary(body, bson_1.Binary.SUBTYPE_BYTE_ARRAY) });
                         }
                         else {
                             reject(new Error(`Fetch photo error from ${url}: ${response.statusCode}-${response.statusMessage}`));

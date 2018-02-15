@@ -12,9 +12,9 @@
     reflect-metadata "^0.1.12"
     rimraf "^2.6.2"
 
-"@gtm/lib.service@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@gtm/lib.service/-/lib.service-1.0.6.tgz#eb8d28e2f8e02a75003f5831b88531be75a36620"
+"@gtm/lib.service@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@gtm/lib.service/-/lib.service-1.0.7.tgz#04bb2d83acb888f133b58aafe61dcd8ae7f02667"
   dependencies:
     "@gtm/lib.common" "^1.0.9"
     body-parser "^1.18.2"
@@ -33,6 +33,12 @@
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.16.8.tgz#687ec34140624a3bec2b1a8ea9268478ae8f3be3"
   dependencies:
     "@types/express" "*"
+    "@types/node" "*"
+
+"@types/bson@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@types/bson/-/bson-1.0.6.tgz#8691f042d99dd163a5eb4dd6dde587d3449f7cda"
+  dependencies:
     "@types/node" "*"
 
 "@types/caseless@*":
@@ -245,7 +251,7 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-bson@~1.0.4:
+bson@^1.0.4, bson@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/bson/-/bson-1.0.4.tgz#93c10d39eaa5b58415cbc4052f3e53e562b0b72c"
 
