@@ -19,7 +19,7 @@ function registerJwtInternal(app, jwtConfig, jwtIgnoreUrls) {
             passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken(),
             passportJwt.ExtractJwt.fromHeader(jwtConfig.headerField),
             passportJwt.ExtractJwt.fromBodyField(jwtConfig.bodyField),
-            passportJwt.ExtractJwt.fromBodyField(jwtConfig.queryField),
+            passportJwt.ExtractJwt.fromUrlQueryParameter(jwtConfig.queryField),
             jwtCookieExtractor
         ])
     }, jwtVerify));
