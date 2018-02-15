@@ -14,8 +14,6 @@ const JwtHandler = passport.authenticate('jwt', { session: false });
  * Register passport.js to extract jwt tokens from cookies & auth header
  */
 export function registerJwtInternal(app: express.Application, jwtConfig: entities.IJwtConfig, jwtIgnoreUrls: string[]) {
-    JwtEmptyValue = jwt.sign({'$':1}, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
-    JwtIgnoreValue = jwt.sign({'$':2}, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
     passport.use(new passportJwt.Strategy(<passportJwt.StrategyOptions>{
         secretOrKey: jwtConfig.secret,
         passReqToCallback: false,
@@ -27,8 +25,14 @@ export function registerJwtInternal(app: express.Application, jwtConfig: entitie
             jwtCookieExtractor
         ])
     }, jwtVerify));
-    jwtIgnoreUrls.map(path => app.use(path, jwtIgnoreHandler));
-    jwtConfig.paths.map(path => app.use(path, jwtEmptyHandler));
+    if (!!jwtIgnoreUrls) {
+        JwtIgnoreValue = jwt.sign({'$':2}, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
+        jwtIgnoreUrls.map(path => app.use(path, jwtIgnoreHandler));
+    }
+    if (!!jwtConfig.paths) {
+        JwtEmptyValue = jwt.sign({'$':1}, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
+        jwtConfig.paths.map(path => app.use(path, jwtEmptyHandler));
+    }
 }
 
 function jwtEmptyHandler(req: express.Request, res: express.Response, next: express.NextFunction): any {
