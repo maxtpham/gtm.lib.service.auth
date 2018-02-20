@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 let JwtEmptyValue;
 let JwtIgnoreValue;
 const JwtHandler = passport.authenticate('jwt', { session: false });
+let JwtExtractor;
 /**
  * Register passport.js to extract jwt tokens from cookies & auth header
  */
@@ -13,13 +14,13 @@ function registerJwtInternal(app, jwtConfig, jwtIgnoreUrls) {
     passport.use(new passportJwt.Strategy({
         secretOrKey: jwtConfig.secret,
         passReqToCallback: false,
-        jwtFromRequest: passportJwt.ExtractJwt.fromExtractors([
+        jwtFromRequest: (JwtExtractor = passportJwt.ExtractJwt.fromExtractors([
             passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken(),
             passportJwt.ExtractJwt.fromHeader(jwtConfig.headerField),
             passportJwt.ExtractJwt.fromBodyField(jwtConfig.bodyField),
             passportJwt.ExtractJwt.fromUrlQueryParameter(jwtConfig.queryField),
             jwtCookieExtractor
-        ])
+        ]))
     }, jwtVerify));
     if (!!jwtIgnoreUrls) {
         JwtIgnoreValue = jwt.sign({ '$': 2 }, jwtConfig.secret, { expiresIn: Number.MAX_VALUE });
@@ -33,13 +34,13 @@ function registerJwtInternal(app, jwtConfig, jwtIgnoreUrls) {
 exports.registerJwtInternal = registerJwtInternal;
 function jwtEmptyHandler(req, res, next) {
     if (!req.cookies.jwt) {
-        req.cookies.jwt = JwtEmptyValue;
+        req.cookies.jwt = JwtExtractor(req) || JwtEmptyValue;
     }
     return JwtHandler(req, res, next);
 }
 function jwtIgnoreHandler(req, res, next) {
     if (!req.cookies.jwt) {
-        req.cookies.jwt = JwtIgnoreValue;
+        req.cookies.jwt = JwtExtractor(req) || JwtIgnoreValue;
     }
     return JwtHandler(req, res, next);
 }
