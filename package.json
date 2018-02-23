@@ -6,9 +6,9 @@
   "typings": "bin/index",
   "scripts": {
     "clean": "rimraf bin/*",
-    "build": "yarn run clean && yarn && tsc",
-    "b": "yarn run build",
-    "prepublishOnly": "npm version patch && yarn run build && git push origin",
+    "build": "npm run clean && npm install && tsc",
+    "b": "npm run build",
+    "prepublishOnly": "npm version patch && npm run build && git push origin",
     "p": "npm publish --access public"
   },
   "keywords": [],
@@ -21,19 +21,18 @@
     "@types/bson": "^1.0.6",
     "@types/express": "^4.11.1",
     "@types/jsonwebtoken": "^7.2.5",
-    "@types/lodash": "^4.14.102",
-    "@types/passport": "^0.4.2",
+    "@types/lodash": "^4.14.104",
+    "@types/passport": "^0.4.3",
     "@types/passport-facebook": "^2.1.7",
     "@types/passport-google-oauth": "^1.0.37",
     "@types/passport-jwt": "^3.0.1",
-    "@types/reflect-metadata": "0.0.5",
     "@types/request": "^2.47.0",
     "@types/request-promise-native": "^1.0.13",
-    "typescript": "^2.7.1"
+    "typescript": "^2.7.2"
   },
   "dependencies": {
-    "@gtm/lib.common": "^1.0.9",
-    "@gtm/lib.service": "^1.0.7",
+    "@gtm/lib.common": "^1.0.10",
+    "@gtm/lib.service": "^1.0.8",
     "bson": "^1.0.4",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.1",
