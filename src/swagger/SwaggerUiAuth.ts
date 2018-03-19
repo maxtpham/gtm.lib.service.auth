@@ -33,12 +33,12 @@ export class SwaggerUiAuth {
 export class SwaggerUiAuthProvider {
     protected basePath: string;
     private provider: string;
-    private config: entities.IOAuth2Config;
+    private config: entities.IOAuth2ProviderConfig;
     private verifyJwtToken: entities.VerifyJwtTokenFunction;
     private jwtSecret: string;
     private jwtPaths: string[];
     
-    constructor(basePath: string, provider: string, swaggerAuthConfig: entities.IOAuth2Config, jwtSecret: string, jwtPaths: string[], createJwtToken: entities.CreateJwtTokenFunction) {
+    constructor(basePath: string, provider: string, swaggerAuthConfig: entities.IOAuth2ProviderConfig, jwtSecret: string, jwtPaths: string[], createJwtToken: entities.CreateJwtTokenFunction) {
         this.basePath = basePath;
         this.provider = provider;
         this.config = swaggerAuthConfig;

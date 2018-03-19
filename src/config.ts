@@ -25,7 +25,7 @@ export function normalizeAuth(config: entities.IAuthConfig): entities.IAuthConfi
 export function normalizeOAuth2(config: entities.IOAuth2Config): entities.IOAuth2Config {
     if (!config.rootUrl) config.rootUrl = config._url;
     if (!config.returnUrl) config.returnUrl = '/';
-    if (!config.auth) config.auth = { google: <entities.IOAuth2Config>{}, facebook: <entities.IOAuth2Config>{} };
+    if (!config.auth) config.auth = { google: <entities.IOAuth2ProviderConfig>{}, facebook: <entities.IOAuth2ProviderConfig>{} };
     if (config.auth.google) {
         if (!config.auth.google.authorizationUrl) config.auth.google.authorizationUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
         if (!config.auth.google.tokenUrl) config.auth.google.tokenUrl = 'https://www.googleapis.com/oauth2/v4/token';

@@ -69,10 +69,10 @@ export interface IOAuth2Config extends IAuthConfig {
     /** The default return url that will be redirected by OAuth2 for all case (logged in, logged out, logged failure) */
     returnUrl: string,
     /** OAuth2 provider specific config */
-    auth: { [key: string]: IOAuth2Config };
+    auth: { [key: string]: IOAuth2ProviderConfig };
 }
 
-export interface IOAuth2Config {
+export interface IOAuth2ProviderConfig {
     authorizationUrl: string;
     tokenUrl: string;
     scope: string[];
@@ -80,10 +80,10 @@ export interface IOAuth2Config {
         library: string;
         class: string;
     };
-    options: IOAuth2OptionConfig;
+    options: IOAuth2ProviderOptionConfig;
 }
 
-export interface IOAuth2OptionConfig {
+export interface IOAuth2ProviderOptionConfig {
     clientID: string;
     clientSecret: string;
     callbackURL: string;

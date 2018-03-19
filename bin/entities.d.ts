@@ -60,10 +60,10 @@ export interface IOAuth2Config extends IAuthConfig {
     returnUrl: string;
     /** OAuth2 provider specific config */
     auth: {
-        [key: string]: IOAuth2Config;
+        [key: string]: IOAuth2ProviderConfig;
     };
 }
-export interface IOAuth2Config {
+export interface IOAuth2ProviderConfig {
     authorizationUrl: string;
     tokenUrl: string;
     scope: string[];
@@ -71,9 +71,9 @@ export interface IOAuth2Config {
         library: string;
         class: string;
     };
-    options: IOAuth2OptionConfig;
+    options: IOAuth2ProviderOptionConfig;
 }
-export interface IOAuth2OptionConfig {
+export interface IOAuth2ProviderOptionConfig {
     clientID: string;
     clientSecret: string;
     callbackURL: string;

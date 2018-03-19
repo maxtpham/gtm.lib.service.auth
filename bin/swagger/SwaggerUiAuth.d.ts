@@ -18,7 +18,7 @@ export declare class SwaggerUiAuthProvider {
     private verifyJwtToken;
     private jwtSecret;
     private jwtPaths;
-    constructor(basePath: string, provider: string, swaggerAuthConfig: entities.IOAuth2Config, jwtSecret: string, jwtPaths: string[], createJwtToken: entities.CreateJwtTokenFunction);
+    constructor(basePath: string, provider: string, swaggerAuthConfig: entities.IOAuth2ProviderConfig, jwtSecret: string, jwtPaths: string[], createJwtToken: entities.CreateJwtTokenFunction);
     /**
      * [GET /swagger/authorization/:provider?response_type=&client_id=&redirect_uri=&scope=&state] OAuth2 authorization proxy
      * to convert from selected scope to default Provider's auth code then encode the requested scopes in the cookies to process later
