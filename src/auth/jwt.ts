@@ -2,9 +2,8 @@ import * as express from 'express';
 import * as passport from "passport";
 import * as passportJwt from "passport-jwt";
 import * as jwt from "jsonwebtoken";
-
-import * as entities from '../entities';
 import * as _ from 'lodash';
+import { IJwtConfig } from '../config';
 
 let JwtEmptyValue: string;
 let JwtIgnoreValue: string;
@@ -14,7 +13,7 @@ let JwtExtractor: passportJwt.JwtFromRequestFunction;
 /**
  * Register passport.js to extract jwt tokens from cookies & auth header
  */
-export function registerJwtInternal(app: express.Application, jwtConfig: entities.IJwtConfig, jwtIgnoreUrls: string[]) {
+export function registerJwtInternal(app: express.Application, jwtConfig: IJwtConfig, jwtIgnoreUrls: string[]) {
     passport.use(new passportJwt.Strategy(<passportJwt.StrategyOptions>{
         secretOrKey: jwtConfig.secret,
         passReqToCallback: false,

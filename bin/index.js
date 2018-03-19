@@ -5,5 +5,5 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./register"));
 __export(require("./lib"));
-__export(require("./auth/ExpressAuthen"));
+__export(require("./auth/express"));
 //# sourceMappingURL=index.js.map

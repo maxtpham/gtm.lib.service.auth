@@ -1,4 +1,3 @@
-export * from "./entities";
 export * from "./register";
 export * from "./lib";
-export * from "./auth/ExpressAuthen";
+export * from "./auth/express";

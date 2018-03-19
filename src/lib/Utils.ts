@@ -2,7 +2,7 @@ import * as path from "path";
 import * as fs from "fs";
 import * as util from "util";
 import * as request from 'request';
-import { AttachmentView } from "@gtm/lib.service/bin";
+import { AttachmentView } from "@gtm/lib.service";
 import { Binary } from "bson";
 
 export class Utils {

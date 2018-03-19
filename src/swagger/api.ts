@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as util from 'util';
 import * as express from 'express';
 import { Utils } from '../lib/Utils';
-import { IAuthConfig } from '../entities';
+import { IAuthConfig } from '../config';
 
 export async function registerSwaggerApiInternal(app: express.Application, config: IAuthConfig, swaggerBaseDir: string, swaggerRouteDirs: string[]): Promise<void> {
     await Promise.all(swaggerRouteDirs.map(async swaggerRouteDir => {

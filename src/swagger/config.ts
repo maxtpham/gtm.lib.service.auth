@@ -3,9 +3,9 @@ import * as path from 'path';
 
 import { StaticFile } from '@gtm/lib.service';
 import { Utils } from '../lib/Utils';
-import * as entities from '../entities';
+import { IAuthConfig } from '../config';
 
-export async function registerSwaggerConfigInternal(app: express.Application, config: entities.IAuthConfig, swaggerBaseDir: string): Promise<string> {
+export async function registerSwaggerConfigInternal(app: express.Application, config: IAuthConfig, swaggerBaseDir: string): Promise<string> {
     // Swagger config files
     let defaultSwaggerConfigUrl: string;
     await Promise.all(config.swagger.outputDirs.map(async swaggerOutputDir => {

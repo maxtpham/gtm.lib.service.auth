@@ -30,4 +30,4 @@ function expressAuthentication(request, securityName, requestedScopes) {
     }
 }
 exports.expressAuthentication = expressAuthentication;
-//# sourceMappingURL=ExpressAuthen.js.map
+//# sourceMappingURL=express.js.map
