@@ -7,7 +7,7 @@ function expressAuthentication(request, securityName, requestedScopes) {
     if (securityName === 'jwt') {
         return new Promise((resolve, reject) => {
             const user = request.user;
-            if (!user || user['$'] === 1) {
+            if (!user || user['$'] === 1) { // Not loggedin or Empty JWT value
                 const err = new Error("Not logged in or Invalid user session");
                 err.__nolog = true;
                 reject(err);

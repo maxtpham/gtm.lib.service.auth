@@ -36,7 +36,7 @@ function registerSwaggerConfigInternal(app, config, swaggerBaseDir) {
                         if (!defaultSwaggerConfigUrl) {
                             defaultSwaggerConfigUrl = routePath;
                         }
-                        console.log(`${config._log} SwaggerConfig GET ${config._url}${routePath} -> ${swaggerConfigPath}`);
+                        console.log(`${config._log} SwaggerConfig GET ${(config.https ? config.https._url : config._url) || config._url}${routePath} -> ${swaggerConfigPath}`);
                     });
                 }
             }

@@ -18,33 +18,33 @@
     "url": "https://github.com/thanhptr/gtm.lib.service.auth.git"
   },
   "devDependencies": {
-    "@types/bson": "^1.0.6",
+    "@types/bson": "^1.0.7",
     "@types/express": "^4.11.1",
-    "@types/jsonwebtoken": "^7.2.5",
-    "@types/lodash": "^4.14.104",
-    "@types/passport": "^0.4.3",
-    "@types/passport-facebook": "^2.1.7",
-    "@types/passport-google-oauth": "^1.0.37",
+    "@types/jsonwebtoken": "^7.2.6",
+    "@types/lodash": "^4.14.106",
+    "@types/passport": "^0.4.4",
+    "@types/passport-facebook": "^2.1.8",
+    "@types/passport-google-oauth": "^1.0.38",
     "@types/passport-jwt": "^3.0.1",
     "@types/request": "^2.47.0",
-    "@types/request-promise-native": "^1.0.13",
-    "typescript": "^2.7.2"
+    "@types/request-promise-native": "^1.0.14",
+    "typescript": "^2.8.1"
   },
   "dependencies": {
     "@gtm/lib.common": "^1.0.10",
-    "@gtm/lib.service": "^1.0.8",
-    "bson": "^1.0.4",
-    "express": "^4.16.2",
-    "jsonwebtoken": "^8.1.1",
+    "@gtm/lib.service": "^1.0.26",
+    "bson": "^1.0.6",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.0",
     "lodash": "^4.17.5",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-jwt": "^3.0.1",
     "reflect-metadata": "^0.1.12",
-    "request": "^2.83.0",
+    "request": "^2.85.0",
     "request-promise-native": "^1.0.5",
     "rimraf": "^2.6.2",
-    "swagger-ui-dist": "^3.10.0"
+    "swagger-ui-dist": "^3.13.2"
   }
 }
