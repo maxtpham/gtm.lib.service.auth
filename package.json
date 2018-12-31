@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@gtm/lib.common": "^1.0.13",
-    "@gtm/lib.service": "^1.0.37",
+    "@gtm/lib.service": "^1.0.38",
     "bson": "^4.0.1",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
