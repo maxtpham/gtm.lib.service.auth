@@ -2,7 +2,6 @@ import * as express from 'express';
 import * as passport from "passport";
 import * as passportJwt from "passport-jwt";
 import * as jwt from "jsonwebtoken";
-import * as _ from 'lodash';
 import { IJwtConfig } from '../config';
 
 let JwtEmptyValue: string;

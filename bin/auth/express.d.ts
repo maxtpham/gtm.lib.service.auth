@@ -1,4 +1,3 @@
-/// <reference types="express" />
 import * as express from "express";
 import { MapOfBoolean } from "@gtm/lib.common";
 export interface JwtToken {

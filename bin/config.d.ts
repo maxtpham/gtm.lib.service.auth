@@ -1,4 +1,4 @@
-import { IModuleConfig } from "@gtm/lib.service/bin";
+import { IModuleConfig } from "@gtm/lib.service";
 export interface IAuthConfig extends IModuleConfig {
     jwt: IJwtConfig;
     swagger: ISwaggerConfig;
@@ -20,3 +20,16 @@ export interface IJwtConfig {
     paths: string[];
 }
 export declare function normalizeAuth(config: IAuthConfig): IAuthConfig;
+/**
+    "jwt": {
+        "headerField": "x-token",
+        "bodyField": "token",
+        "queryField": "token",
+        "secret": "secret",
+        "paths": ["/web", "/api"]
+    },
+    "swagger": {
+        "baseUrl": "/swagger",
+        "outputDirs": [ "../swagger/output" ]
+    },
+ */ 

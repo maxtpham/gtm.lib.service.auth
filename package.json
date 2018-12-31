@@ -8,7 +8,7 @@
     "clean": "rimraf bin/*",
     "build": "npm run clean && npm install && tsc",
     "b": "npm run build",
-    "prepublishOnly": "npm version patch && npm run build && git push origin",
+    "prepublishOnly": "npm version patch && npm run build && git push origin && git push --tags origin",
     "p": "npm publish --access public"
   },
   "keywords": [],
@@ -18,33 +18,24 @@
     "url": "https://github.com/thanhptr/gtm.lib.service.auth.git"
   },
   "devDependencies": {
-    "@types/bson": "^1.0.7",
-    "@types/express": "^4.11.1",
-    "@types/jsonwebtoken": "^7.2.6",
-    "@types/lodash": "^4.14.106",
-    "@types/passport": "^0.4.4",
-    "@types/passport-facebook": "^2.1.8",
-    "@types/passport-google-oauth": "^1.0.38",
+    "@types/bson": "^1.0.11",
+    "@types/express": "^4.16.0",
+    "@types/jsonwebtoken": "^8.3.0",
+    "@types/passport": "^1.0.0",
     "@types/passport-jwt": "^3.0.1",
-    "@types/request": "^2.47.0",
-    "@types/request-promise-native": "^1.0.14",
-    "typescript": "^2.8.1"
+    "@types/request": "^2.48.1",
+    "typescript": "^3.2.2"
   },
   "dependencies": {
-    "@gtm/lib.common": "^1.0.10",
-    "@gtm/lib.service": "^1.0.32",
-    "bson": "^1.0.6",
-    "express": "^4.16.3",
-    "jsonwebtoken": "^8.2.0",
-    "lodash": "^4.17.5",
+    "@gtm/lib.common": "^1.0.11",
+    "@gtm/lib.service": "^1.0.34",
+    "bson": "^4.0.1",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
     "passport": "^0.4.0",
-    "passport-facebook": "^2.1.1",
-    "passport-google-oauth": "^1.0.0",
-    "passport-jwt": "^3.0.1",
+    "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.12",
-    "request": "^2.85.0",
-    "request-promise-native": "^1.0.5",
-    "rimraf": "^2.6.2",
-    "swagger-ui-dist": "^3.13.2"
+    "request": "^2.88.0",
+    "rimraf": "^2.6.2"
   }
 }
