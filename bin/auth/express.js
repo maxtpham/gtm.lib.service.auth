@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * The Express.js authentication entry for TSOA
  */
 function expressAuthentication(request, securityName, requestedScopes) {
-    if (securityName === 'jwt') {
+    if (!!securityName && securityName.length > 0 && securityName.indexOf('jwt') >= 0) {
         return new Promise((resolve, reject) => {
             const user = request.user;
             if (!user || user['$'] === 1) { // Not loggedin or Empty JWT value

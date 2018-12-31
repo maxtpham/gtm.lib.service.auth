@@ -17,8 +17,8 @@ export interface JwtToken {
 /**
  * The Express.js authentication entry for TSOA
  */
-export function expressAuthentication(request: express.Request, securityName: string, requestedScopes?: string[]): Promise<any> {
-    if (securityName === 'jwt') {
+export function expressAuthentication(request: express.Request, securityName: string[], requestedScopes?: string[]): Promise<any> {
+    if (!!securityName && securityName.length > 0 && securityName.indexOf('jwt') >= 0) {
         return new Promise((resolve, reject) => {
             const user = <JwtToken>(<any>request).user;
             if (!user || user['$'] === 1) { // Not loggedin or Empty JWT value
