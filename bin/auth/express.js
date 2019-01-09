@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * The Express.js authentication entry for TSOA
+ * https://github.com/lukeautry/tsoa/#authentication
  */
 function expressAuthentication(request, name, scopes) {
     return name !== 'jwt' ? Promise.resolve() : new Promise((resolve, reject) => {

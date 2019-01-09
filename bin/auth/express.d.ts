@@ -14,5 +14,6 @@ export interface JwtToken {
 }
 /**
  * The Express.js authentication entry for TSOA
+ * https://github.com/lukeautry/tsoa/#authentication
  */
 export declare function expressAuthentication(request: express.Request, name: string, scopes?: string[]): Promise<any>;
