@@ -30,7 +30,7 @@ export function expressAuthentication(request: express.Request, name: string, sc
         } else {
             // Check if JWT contains all required scopes
             for (let requestedScope of scopes) {
-                if (!(!!user.scope && !!user.scope[requestedScope]) || !(!!user.roles && !!user.roles[requestedScope])) {
+                if (!(!!user.scope && !!user.scope[requestedScope]) && !(!!user.roles && !!user.roles[requestedScope])) {
                     const err = new Error("User is not permitted to execute the action");
                     (<any>err).__nolog = true;
                     return reject(err);
